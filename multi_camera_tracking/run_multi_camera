@@ -35,7 +35,6 @@ if [ $# -eq 0 ]; then
         xhost + && \
         sudo docker run \
             --runtime=nvidia \
-            --rm \
             -ti \
             -e DISPLAY \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
