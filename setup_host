@@ -3,16 +3,16 @@
 echo "Installing nvidia-384" && \
 sudo apt-get update && \
 sudo apt-get install -y nvidia-384 && \
-echo "Successfully installed nvidia-384" && \
+echo "Successfully installed nvidia-384"
 # Install Docker
 echo "Installing Docker" && \
 curl -fsSL get.docker.com -o get-docker.sh && \
 sh get-docker.sh && \
-echo "Successfully installed Docker" && \
+echo "Successfully installed Docker"
 # Testing Docker
 echo "Testing Docker" && \
 sudo docker run hello-world && \
-echo "Successfully tested Docker" && \
+echo "Successfully tested Docker"
 # Installing nvidia-docker 2
 echo "Please remove nvidia-docker 1" && \
 echo "Installing nvidia-docker 2" && \
