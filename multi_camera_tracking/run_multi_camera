@@ -46,8 +46,8 @@ if [ $# -eq 0 ]; then
             --mount type=bind,source=$(pwd)/open_ptrack_config/yolo_detector/launch/,destination=/root/workspace/ros/src/open_ptrack/yolo_detector/launch/ \
             --net=host \
             --device /dev/bus/usb:/dev/bus/usb \
+            --env-file ros_network.env \
             --name $container_name \
-            --env-file ros_network.env
             openptrack/open_ptrack bash     
     fi
 
