@@ -1,6 +1,6 @@
 # open_ptrack_config
 
-This repository contains configuration and launch files that can be used with OpenPTrack v2. 
+This repository contains configuration and launch files for use by the Docker images in OpenPTrack v2. Please see [here](https://github.com/OpenPTrack/open_ptrack_v2/wiki/Docker-Images) for information on its use
 
 OpenPTrack is an open source project launched in 2013 to create a scalable, multi-camera solution for person tracking that specifically aims to support applications in education, art, and culture.
 
