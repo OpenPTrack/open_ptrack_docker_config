@@ -1,4 +1,4 @@
-# open_ptrack_config
+# open_ptrack_docker_config
 
 This repository contains configuration and launch files for use by the Docker images in OpenPTrack v2. Please see [here](https://github.com/OpenPTrack/open_ptrack_v2/wiki/Docker-Images) for information on its use
 
