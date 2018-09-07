@@ -27,7 +27,8 @@ if [ $# -eq 0 ]; then
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/launch/,destination=/root/workspace/ros/src/open_ptrack/tracking/launch/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/conf/,destination=/root/workspace/ros/src/open_ptrack/tracking/conf/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/yolo_detector/launch/,destination=/root/workspace/ros/src/open_ptrack/yolo_detector/launch/ \
-            --net=host \
+            -v "$(pwd)"/realsense/:/root/realsense/ \
+	    --net=host \
             --device /dev/bus/usb:/dev/bus/usb \
             --name $container_name \
             openptrack/open_ptrack bash
