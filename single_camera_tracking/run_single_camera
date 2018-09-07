@@ -30,6 +30,9 @@ if [ $# -eq 0 ]; then
             -v "$(pwd)"/realsense/:/root/realsense/ \
 	    --net=host \
             --device /dev/bus/usb:/dev/bus/usb \
+            --device /dev/video0:/dev/video0 \
+            --device /dev/video1:/dev/video1 \
+            --device /dev/video2:/dev/video2 \
             --name $container_name \
             openptrack/open_ptrack bash
     fi
