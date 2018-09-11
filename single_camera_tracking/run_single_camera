@@ -1,6 +1,9 @@
 #!/bin/bash
 
 container_name="open_ptrack_single_camera"
+XAUTH=/tmp/.docker.xauth
+touch $XAUTH
+xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 if [ $# -eq 0 ]; then
     if [ "$(sudo docker ps -a | grep $container_name)" ]; then
@@ -27,9 +30,19 @@ if [ $# -eq 0 ]; then
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/launch/,destination=/root/workspace/ros/src/open_ptrack/tracking/launch/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/conf/,destination=/root/workspace/ros/src/open_ptrack/tracking/conf/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/yolo_detector/launch/,destination=/root/workspace/ros/src/open_ptrack/yolo_detector/launch/ \
-            --net=host \
+	    -v "$(pwd)"/zed/:/root/zed/ \
+            --volume=$XSOCK:$XSOCK:rw \
+	    --volume=$XAUTH:$XAUTH:rw \
+            --env="XAUTHORITY=${XAUTH}" \
+	    --env="QT_X11_NO_MITSHM=1" \
+            --privileged=True \
+	    --net=host \
             --device /dev/bus/usb:/dev/bus/usb \
-            --name $container_name \
+            --device /dev/video0:/dev/video0\
+	    --device /dev/video1:/dev/video1\
+	    --device /dev/video2:/dev/video2\
+	    --device /dev/video3:/dev/video3\
+	    --name $container_name \
             openptrack/open_ptrack bash
     fi
 else
