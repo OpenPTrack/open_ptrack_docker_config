@@ -51,7 +51,7 @@ else
                     sudo docker stop $container_name
                 fi
             ;;
-            \? ) printf "Usage: ./run_singlecamera.sh [-r -s]\n-r remove \n-s stop"
+            \? ) printf "Usage: ./run_single_camera.sh [-r -s]\n-r remove \n-s stop"
             ;;
         esac
     done
