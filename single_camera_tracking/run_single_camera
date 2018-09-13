@@ -1,7 +1,7 @@
 #!/bin/bash
 
 container_name="open_ptrack_single_camera"
-image_name="openptrack/open_ptrack:realsense"
+image_name="openptrack/open_ptrack"
 
 if [ $# -eq 0 ]; then
     if [ "$(sudo docker ps -a | grep $container_name)" ]; then
