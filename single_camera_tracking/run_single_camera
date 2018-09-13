@@ -1,7 +1,6 @@
 #!/bin/bash
-
+image_name="openptrack/open_ptrack:realsense"
 container_name="open_ptrack_single_camera"
-
 if [ $# -eq 0 ]; then
     if [ "$(sudo docker ps -a | grep $container_name)" ]; then
         if [ ! "$(sudo docker inspect -f {{.State.Running}} $container_name)" ]; then
@@ -34,7 +33,7 @@ if [ $# -eq 0 ]; then
             --device /dev/video1:/dev/video1 \
             --device /dev/video2:/dev/video2 \
             --name $container_name \
-            openptrack/open_ptrack bash
+            $image_name bash
     fi
 else
     while getopts ":rs" opt; do
