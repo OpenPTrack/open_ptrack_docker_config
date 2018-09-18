@@ -14,26 +14,25 @@
     <arg name="sensor_name" value="$(arg sensor_name)" /> -->
   </include>
 
-  <group if="$(arg enable_people_tracking)">
   <!-- People tracking -->
+  <!-- <group if="$(arg enable_people_tracking)">
   <include file="detector_depth_zed.launch"/>
   <include file="$(find tracking)/launch/tracker_single.launch"/>
-  </group>
+  </group> -->
 
-  <group if="$(arg enable_pose)">
   <!-- Skeleton tracking -->
+  <!-- <group if="$(arg enable_pose)">
   <include file="$(find detection)/launch/skeleton_detector.launch">
     <arg name="sensor_name" value="$(arg sensor_name)" />
   </include>
   <include file="$(find tracking)/launch/skeleton_tracker_single.launch">
      <arg name="input_topic" value="/detector/skeletons" />
   </include>
-  <!-- Pose recognition -->
   <include file="$(find pose_recognition)/launch/pose_recognition.launch" />
-  </group>
+  </group> -->
 
-  <group if="$(arg enable_object)">
   <!-- Object Tracking -->
+  <!-- <group if="$(arg enable_object)">
     <include file="$(find yolo_detector)/launch/detect_yolo_object_kinect_network.launch">
       <arg name="sensor_name"             value="$(arg sensor_name)" />
     </include>
@@ -42,8 +41,7 @@
      <param name="set_object_names" value="true" />
     </node>
     <include file="$(find tracking)/launch/object_tracker_single.launch" />
-
-  </group>
+  </group> -->
 
   <!-- UDP messaging -->
   <include file="$(find opt_utils)/launch/ros2udp_converter.launch"/>
