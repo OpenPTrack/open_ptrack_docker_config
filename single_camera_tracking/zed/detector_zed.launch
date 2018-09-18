@@ -10,6 +10,7 @@
   <!--include file="$(find opt_calibration)/launch/opt_calibration_results.launch"/-->
 
   <include file="$(find zed_wrapper)/launch/zed.launch">
+    <arg name="camera_model" value="0" /> <!-- 0=ZED, 1=ZEDM-->
     <!-- <arg name="publish_frame" value="true" />
     <arg name="sensor_name" value="$(arg sensor_name)" /> -->
   </include>
