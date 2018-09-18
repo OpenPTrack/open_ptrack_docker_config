@@ -16,10 +16,10 @@
   </include>
 
   <!-- People tracking -->
-  <!-- <group if="$(arg enable_people_tracking)">
-  <include file="detector_depth_zed.launch"/>
-  <include file="$(find tracking)/launch/tracker_single.launch"/>
-  </group> -->
+  <group if="$(arg enable_people_tracking)">
+    <include file="detector_depth_zed.launch"/>
+    <include file="$(find tracking)/launch/tracker_single.launch"/>
+  </group>
 
   <!-- Skeleton tracking -->
   <!-- <group if="$(arg enable_pose)">
