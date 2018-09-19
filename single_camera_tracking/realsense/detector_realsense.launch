@@ -3,14 +3,18 @@
 <launch>
   <arg default="true" name="enable_people_tracking"/>
   <arg default="false" name="enable_pose"/>
-  <arg default="true" name="enable_object"/>
-  <arg default="kinect2_head" name="sensor_name"/>
+  <arg default="false" name="enable_object"/>
+  <arg name="sensor_name" default="realsense_head" />
 
-  <include file="$(find realsense2_camera)/launch/rs_rgbd.launch"/>
+  <include file="$(find realsense2_camera)/launch/rs_rgbd.launch">
+    <arg name="camera"              value="$(arg sensor_name)"/>
+  </include>
 
   <group if="$(arg enable_people_tracking)">
     <!-- People tracking -->
-    <include file="detector_depth_real.launch"/>
+    <include file="detector_depth_real.launch"> 
+        <arg name="camera_name"              value="$(arg sensor_name)"/>
+    </include>
     <include file="$(find tracking)/launch/tracker_single.launch"/>
   </group>
 
