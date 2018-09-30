@@ -12,6 +12,9 @@
   <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
     <arg name="publish_tf" value="true" />
     <arg name="base_name" value="$(arg sensor_name)" />
+    <!-- <remap from="/$(arg sensor_name)/depth_lowres/image" to="/$(arg sensor_name)/sd/image_depth_rect"/>
+    <remap from="/$(arg sensor_name)/rgb_lowres/image" to="/$(arg sensor_name)/sd/image_color_rect"/>
+    <remap from="/$(arg sensor_name)/rgb_lowres/camera_info" to="/$(arg sensor_name)/sd/camera_info"/> -->
   </include>
 
   <group if="$(arg enable_people_tracking)">
@@ -37,10 +40,10 @@
     <include file="$(find yolo_detector)/launch/detect_yolo_object_kinect_network.launch">
       <arg name="sensor_name"             value="$(arg sensor_name)" />
     </include>
-    <node pkg="detection" type="multiple_objects_detection_node" name="multiple_objects_detection" output="screen" required="true">
+    <!-- <node pkg="detection" type="multiple_objects_detection_node" name="multiple_objects_detection" output="screen" required="true">
      <rosparam command="load"                        file="$(find detection)/conf/multiple_objects_detection.yaml" />
      <param name="set_object_names" value="true" />
-    </node>
+    </node> -->
     <include file="$(find tracking)/launch/object_tracker_single.launch" />
 
   </group>
