@@ -1,9 +1,9 @@
 #!/bin/bash
 # Install nvidia-384
-echo "Installing nvidia-384" && \
+echo "Installing nvidia-396" && \
 sudo apt-get update && \
-sudo apt-get install -y nvidia-384 && \
-echo "Successfully installed nvidia-384"
+sudo apt-get install -y nvidia-396 && \
+echo "Successfully installed nvidia-396"
 # Install Docker
 echo "Installing Docker" && \
 sudo apt-get install curl && \
