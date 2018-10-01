@@ -1,6 +1,8 @@
 #!/bin/bash
 
 container_name="open_ptrack_single_camera"
+image_name="openptrack/open_ptrack:zed"
+
 XAUTH=/tmp/.docker.xauth
 touch $XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
@@ -43,7 +45,7 @@ if [ $# -eq 0 ]; then
 	    --device /dev/video2:/dev/video2\
 	    --device /dev/video3:/dev/video3\
 	    --name $container_name \
-            openptrack/open_ptrack bash
+            $image_name bash
     fi
 else
     while getopts ":rs" opt; do
