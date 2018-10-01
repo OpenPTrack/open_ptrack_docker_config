@@ -1,7 +1,7 @@
 #!/bin/bash
 
 container_name="open_ptrack_single_camera"
-image_name="openptrack/open_ptrack:zed"
+image_name="openptrack/open_ptrack:zed-in-progress"
 
 XAUTH=/tmp/.docker.xauth
 touch $XAUTH
