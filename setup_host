@@ -4,6 +4,13 @@ echo "Installing nvidia-396" && \
 sudo apt-get update && \
 sudo apt-get install -y nvidia-396 && \
 echo "Successfully installed nvidia-396"
+# Install cuda-9.2
+wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux -O cuda.run && \
+chmod +x cuda.run && \ 
+./cuda.run -silent --toolkit && \
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.2/lib64' >> ~/.bashrc &&\
+echo 'export PATH=$PATH:/usr/local/cuda-9.2/bin' >> ~/.bashrc          
+echo "Successfully installed cuda_9.2"
 # Install Docker
 echo "Installing Docker" && \
 sudo apt-get install curl && \
