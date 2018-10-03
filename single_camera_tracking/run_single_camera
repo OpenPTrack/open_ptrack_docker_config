@@ -1,6 +1,6 @@
 #!/bin/bash
 
-container_name="open_ptrack_single_camera"
+container_name="open_ptrack_single_camera_kinect"
 image_name="openptrack/open_ptrack:kinect"
 
 if [ $# -eq 0 ]; then
