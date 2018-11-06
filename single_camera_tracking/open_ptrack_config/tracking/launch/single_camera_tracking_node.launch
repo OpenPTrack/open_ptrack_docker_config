@@ -38,7 +38,6 @@
       <arg name="sensor_name"             value="$(arg sensor_name)" />
     </include>
     <include file="$(find tracking)/launch/object_tracker_single.launch" />
-
   </group>
 
   <!-- UDP messaging -->
