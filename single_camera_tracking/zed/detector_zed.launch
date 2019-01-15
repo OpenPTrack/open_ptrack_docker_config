@@ -5,23 +5,22 @@
   <arg name="enable_people_tracking" default="true" />
   <arg name="enable_pose" default="false" />
   <arg name="enable_object" default="false" />
-  <arg name="sensor_name" default="kinect2_head" />
+  <arg name="sensor_name" default="zed_head" />
   <!-- Load calibration results -->
   <!--include file="$(find opt_calibration)/launch/opt_calibration_results.launch"/-->
 
-  <include file="zed_camera.launch">
+  <include file="$(find zed_wrapper)/launch/zed.launch">
     <arg name="camera_model" value="0" />
-    <arg name="frame_rate"           value="15" />
-    <arg name="resolution"           default="3" />
-
-    <!-- <arg name="publish_frame" value="true" />
-    <arg name="sensor_name" value="$(arg sensor_name)" /> -->
+    <arg name="frame_rate"           value="100" />
+    <arg name="resolution"           value="3" />
   </include>
+
+  <!-- <node pkg="rosbag" type="play" name="player" output="screen" args="clock -q -l /root/zed/ZED_VGA_100HZ.bag"/> -->
 
   <!-- People tracking -->
   <group if="$(arg enable_people_tracking)">
     <include file="detector_depth_zed.launch"/>
-    <include file="tracker_single.launch"/>
+    <include file="$(find tracking)/launch/tracker_single.launch"/>
   </group>
 
   <!-- Skeleton tracking -->
