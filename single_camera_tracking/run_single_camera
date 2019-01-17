@@ -2,7 +2,7 @@
 
 container_name="open_ptrack_single_camera"
 image_name="openptrack/open_ptrack"
-
+cd $(dirname $0)
 if [ $# -eq 0 ]; then
     if [ "$(sudo docker ps -a | grep $container_name)" ]; then
         if [ ! "$(sudo docker inspect -f {{.State.Running}} $container_name)" ]; then
