@@ -1,6 +1,7 @@
 #!/bin/bash
 image_name="openptrack/open_ptrack"
 container_name="open_ptrack_multi_camera"
+cd $(dirname $0)
 if [ $# -eq 0 ]; then
     if [ "$(sudo docker ps -a | grep $container_name)" ]; then
 
