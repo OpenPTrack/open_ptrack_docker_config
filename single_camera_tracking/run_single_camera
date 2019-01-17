@@ -22,6 +22,7 @@ if [ $# -eq 0 ]; then
             --runtime=nvidia \
             -ti \
             -e DISPLAY \
+            --env QT_X11_NO_MITSHM=1 \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             --mount type=bind,source=$(pwd)/open_ptrack_config/detection/launch/,destination=/root/workspace/ros/src/open_ptrack/detection/launch/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/detection/conf/,destination=/root/workspace/ros/src/open_ptrack/detection/conf/ \
