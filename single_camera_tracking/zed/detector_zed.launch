@@ -9,11 +9,13 @@
   <!-- Load calibration results -->
   <!--include file="$(find opt_calibration)/launch/opt_calibration_results.launch"/-->
 
-  <include file="$(find zed_wrapper)/launch/zed.launch">
-    <arg name="camera_model" value="0" />
-    <arg name="frame_rate"           value="100" />
-    <arg name="resolution"           value="3" />
-  </include>
+    <group ns="$(arg sensor_name)">
+      <include file="$(find zed_wrapper)/launch/zed.launch">
+        <arg name="camera_model" value="0" />
+        <arg name="frame_rate"           value="100" />
+        <arg name="resolution"           value="3" />
+      </include>
+    </group>
 
   <!-- <node pkg="rosbag" type="play" name="player" output="screen" args="clock -q -l /root/zed/ZED_VGA_100HZ.bag"/> -->
 
