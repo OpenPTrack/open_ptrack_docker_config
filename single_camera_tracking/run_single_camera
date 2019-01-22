@@ -1,5 +1,5 @@
 #!/bin/bash
-
+image_name="openptrack/open_ptrack:realsense"
 container_name="open_ptrack_single_camera"
 image_name="openptrack/open_ptrack"
 cd $(dirname $0)
@@ -35,6 +35,7 @@ if [ $# -eq 0 ]; then
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/conf/,destination=/root/workspace/ros/src/open_ptrack/tracking/conf/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/yolo_detector/launch/,destination=/root/workspace/ros/src/open_ptrack/yolo_detector/launch/ \
             -v "$(pwd)"/zed/:/root/zed/ \
+            -v "$(pwd)"/realsense/:/root/realsense/ \
             --volume=$XSOCK:$XSOCK:rw \
             --volume=$XAUTH:$XAUTH:rw \
             --env="XAUTHORITY=${XAUTH}" \
@@ -65,7 +66,7 @@ else
                     sudo docker stop $container_name
                 fi
             ;;
-            \? ) printf "Usage: ./run_singlecamera.sh [-r -s]\n-r remove \n-s stop"
+            \? ) printf "Usage: ./run_single_camera.sh [-r -s]\n-r remove \n-s stop"
             ;;
         esac
     done

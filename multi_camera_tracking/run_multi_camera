@@ -15,9 +15,7 @@ if [ $# -eq 0 ]; then
             sudo docker start $container_name && \
             sudo docker exec  -ti -e DISPLAY $container_name bash
         fi
-
     else
-
         printf "$container_name container does not exist.\nRunning a new $container_name container. \n" && \
         printf "Loading ROS network configuration\n" && \
         export $(cat ros_network.env | xargs)

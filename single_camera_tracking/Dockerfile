@@ -3,6 +3,7 @@ LABEL maintainer "Samir Tabriz"
 
 ARG branch=master
 
+<<<<<<< HEAD
 RUN wget https://www.stereolabs.com/developers/downloads/archives/ZED_SDK_Linux_Ubuntu16_v2.0.1.run
 RUN sudo chmod +x ZED_SDK_Linux_Ubuntu16_v2.0.1.run
 
@@ -22,6 +23,17 @@ RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula selec
     rm -rf /tmp/temp_zed
 
 RUN git clone --branch v2.2.x https://github.com/stereolabs/zed-ros-wrapper.git ~/workspace/ros/src/zed-ros-wrapper
+=======
+RUN apt-key adv --keyserver keys.gnupg.net --recv-key C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key C8B3A55A6F3EFCDE \
+    && add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" -u \
+    && rm -f /etc/apt/sources.list.d/realsense-public.list \
+    && apt-get update \
+    && apt-get install -y librealsense2-dkms librealsense2-utils librealsense2-dev librealsense2-dbg
+
+RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash \
+	&& git clone https://github.com/intel-ros/realsense.git ~/workspace/ros/src/realsense\
+    && apt-get install ros-kinetic-rgbd-launch"
+>>>>>>> 251541e27121ccf144e462567174e8c31095c22a
 
 RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash \
     && git clone https://github.com/openptrack/open_ptrack_v2 ~/workspace/ros/src/open_ptrack \
@@ -45,4 +57,7 @@ RUN cd /root/workspace/ros/src/open_ptrack/recognition/install_scripts \
 RUN ln -s /root/workspace/ros/src/open_ptrack /root/open_ptrack
 
 WORKDIR /root
+<<<<<<< HEAD
 
+=======
+>>>>>>> 251541e27121ccf144e462567174e8c31095c22a
