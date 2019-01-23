@@ -17,7 +17,7 @@
   </group>
    
   <!-- Launch ground based people detection node -->
-  <node pkg="detection" type="ground_based_people_detector_zed"
+  <node pkg="detection" type="ground_based_people_detector"
         name="ground_based_people_detector_$(arg sensor_name)" output="screen" respawn="true">
         
     <rosparam command="load"                        file="$(find detection)/conf/ground_based_people_detector_zed.yaml" /> 
@@ -31,5 +31,4 @@
     <param name="ground_from_extrinsic_calibration" value="$(arg ground_from_calibration)"/>  
     
   </node>
-
 </launch>
