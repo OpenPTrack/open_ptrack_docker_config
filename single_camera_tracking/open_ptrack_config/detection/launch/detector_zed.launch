@@ -22,3 +22,4 @@
     <param name="ground_from_extrinsic_calibration" value="$(arg ground_from_calibration)"/>  
     
   </node>
+</launch>
