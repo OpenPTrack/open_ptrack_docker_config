@@ -14,11 +14,9 @@
          <arg name="resolution" value="3" />
       </include>
    </group>
-   <!-- <node pkg="rosbag" type="play" name="player" output="screen" args="clock -q -l /root/zed/ZED_VGA_100HZ.bag"/> -->
    <!-- People tracking -->
    <group if="$(arg enable_people_tracking)">
-      <include file="detector_depth_zed.launch" />
-      <!--  <include file="$(find detection)/launch/detector_depth_zed.launch"/>  -->
+      <include file="$(find detection)/launch/detector_depth_zed.launch"/>  
       <include file="$(find tracking)/launch/tracker_single.launch" />
    </group>
    <!-- Skeleton tracking -->
