@@ -1,7 +1,6 @@
 #!/bin/bash
 image_name="openptrack/open_ptrack:realsense"
 container_name="open_ptrack_single_camera"
-image_name="openptrack/open_ptrack"
 cd $(dirname $0)
 
 XAUTH=/tmp/.docker.xauth

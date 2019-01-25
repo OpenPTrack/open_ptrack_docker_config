@@ -1,93 +1,25 @@
-<!--
 <?xml version="1.0"?>
 <launch>
 
-  <!-- Camera parameters 
-  <arg name="sensor_id"               default="0" />
+  <!-- Camera parameters -->
+  <arg name="sensor_id"               default="" />
   <arg name="sensor_name"             default="zed" />
+  <arg name="rgb_camera_info_url"     default="" />
   <arg name="intermediate_topic"      default="/detector/detections" />
   <arg name="ground_from_calibration" default="false" />
-
-  <!-- Launch sensor 
-  <include file="$(find zed_wrapper)/launch/zed.launch">
-   	<arg name="zed_id"           value="$(arg sensor_id)" />
-    <arg name="sensor_name"         value="$(arg sensor_name)" />
-  </include> 
   
-  <!-- Launch ground based people detection node 
-  <node pkg="detection" type="ground_based_people_detector_zed"
+  <!-- Launch ground based people detection node -->
+  <node pkg="detection" type="ground_based_people_detector"
         name="ground_based_people_detector_$(arg sensor_name)" output="screen" respawn="true">
         
     <rosparam command="load"                        file="$(find detection)/conf/ground_based_people_detector_zed.yaml" /> 
     
     <param name="classifier_file"                   value="$(find detection)/data/HogSvmPCL.yaml"/>
-    <param name="rgb_image_topic"                  value="/$(arg sensor_name)/rgb/image_rect_color"/>
-	<param name="depth_image_topic"                 value="/$(arg sensor_name)/depth/depth_registered"/>
+    <param name="pointcloud_topic"                  value="/$(arg sensor_name)/zed/point_cloud/cloud_registered"/>
+    <param name="camera_info_topic"                 value="/$(arg sensor_name)/zed/rgb/camera_info"/>
     <param name="output_topic"                      value="$(arg intermediate_topic)"/>
-	<param name="camera_info_topic"                 value="/$(arg sensor_name)/rgb/camera_info"/>
-    <param name="rate"                              value="60.0"/>  
+    <param name="rate"                              value="60.0"/>
     <param name="ground_from_extrinsic_calibration" value="$(arg ground_from_calibration)"/>  
     
   </node>
-
-</launch>
--->
-
-
-<?xml version="1.0"?>
-<!-- SESSION ID: 1500506803 -->
-<launch>
-
-  <arg name="enable_people_tracking" default="true" />
-  <arg name="enable_pose" default="false" />
-  <arg name="enable_object" default="false" />
-  <arg name="sensor_name" default="zed_head" />
-  <!-- Load calibration results -->
-  <!--include file="$(find opt_calibration)/launch/opt_calibration_results.launch"/-->
-
-    <group ns="$(arg sensor_name)">
-      <include file="$(find zed_wrapper)/launch/zed.launch">
-        <arg name="camera_model" value="0" />
-        <arg name="frame_rate"           value="100" />
-        <arg name="resolution"           value="3" />
-      </include>
-    </group>
-
-  <!-- <node pkg="rosbag" type="play" name="player" output="screen" args="clock -q -l /root/zed/ZED_VGA_100HZ.bag"/> -->
-
-  <!-- People tracking -->
-  <group if="$(arg enable_people_tracking)">
-    <include file="detector_depth_zed.launch"/>
-   <!--  <include file="$(find detection)/launch/detector_depth_zed.launch"/>  -->
-    <include file="$(find tracking)/launch/tracker_single.launch"/>
-  </group>
-
-  <!-- Skeleton tracking -->
-  <!-- <group if="$(arg enable_pose)">
-  <include file="$(find detection)/launch/skeleton_detector.launch">
-    <arg name="sensor_name" value="$(arg sensor_name)" />
-  </include>
-  <include file="$(find tracking)/launch/skeleton_tracker_single.launch">
-     <arg name="input_topic" value="/detector/skeletons" />
-  </include>
-  <include file="$(find pose_recognition)/launch/pose_recognition.launch" />
-  </group> -->
-
-  <!-- Object Tracking -->
-  <!-- <group if="$(arg enable_object)">
-    <include file="$(find yolo_detector)/launch/detect_yolo_object_kinect_network.launch">
-      <arg name="sensor_name"             value="$(arg sensor_name)" />
-    </include>
-    <node pkg="detection" type="multiple_objects_detection_node" name="multiple_objects_detection" output="screen" required="true">
-     <rosparam command="load"                        file="$(find detection)/conf/multiple_objects_detection.yaml" />
-     <param name="set_object_names" value="true" />
-    </node>
-    <include file="$(find tracking)/launch/object_tracker_single.launch" />
-  </group> -->
-
-  <!-- UDP messaging -->
-  <include file="$(find opt_utils)/launch/ros2udp_converter.launch"/>
-
-  <!-- Visualization -->
-  <include file="$(find opt_utils)/launch/singlecamera_visualization.launch"/>
 </launch>
