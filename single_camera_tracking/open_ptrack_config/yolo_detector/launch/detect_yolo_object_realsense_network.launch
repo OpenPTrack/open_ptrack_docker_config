@@ -6,7 +6,7 @@
   <arg name="training_set" default="$(optenv OPT_OBJECT_TRAINING coco)" />
 
   <group if="$(arg standalone)" >
-    <!-- Start the Kinect -->
+    <!-- Start the realsense -->
     <include file="$(find realsense2_camera)/launch/rs_rgbd.launch"/>
   </group>  
   
