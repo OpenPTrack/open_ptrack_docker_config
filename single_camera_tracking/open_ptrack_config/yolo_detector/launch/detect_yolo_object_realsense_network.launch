@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="sensor_name" default="realsense" />
+  <arg name="sensor_name" default="camera" />
   <arg name="standalone" default="false" />
   <arg name="training_set" default="$(optenv OPT_OBJECT_TRAINING coco)" />
 
