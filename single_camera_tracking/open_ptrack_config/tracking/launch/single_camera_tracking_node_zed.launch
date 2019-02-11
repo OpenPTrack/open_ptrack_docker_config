@@ -17,7 +17,7 @@
     <group if="$(arg enable_people_tracking)">
         <!-- People tracking -->
         <include file="$(find detection)/launch/detector_depth_zed.launch">
-            <arg name="camera_name" value="$(arg sensor_name)" />
+            <arg name="sensor_name" value="$(arg sensor_name)" />
         </include>
         <include file="$(find tracking)/launch/tracker_single.launch" />
     </group>
