@@ -4,9 +4,9 @@
     <arg name="enable_people_tracking" default="true" />
     <arg name="enable_pose" default="true" />
     <arg name="enable_object" default="true" />
-    <arg name="sensor_name" default="realsense_head" />
     <arg name="sensor_type" default="kinect2" />
-    
+    <arg name="sensor_name" default="$(sensor_type)_head" />
+
     <!-- launch single camera tracking -->
     <include file="$(find detection)/launch/single_camera_tracking_node_$(sensor_type).launch">
         <arg name="sensor_name"             value="$(arg sensor_name)" />
