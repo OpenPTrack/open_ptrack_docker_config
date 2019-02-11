@@ -5,10 +5,10 @@
     <arg name="enable_pose" default="true" />
     <arg name="enable_object" default="true" />
     <arg name="sensor_type" default="kinect2" />
-    <arg name="sensor_name" default="$(sensor_type)_head" />
+    <arg name="sensor_name" default="$(arg sensor_type)_head" />
 
     <!-- launch single camera tracking -->
-    <include file="$(find detection)/launch/single_camera_tracking_node_$(sensor_type).launch">
+    <include file="$(find detection)/launch/single_camera_tracking_node_$(arg sensor_type).launch">
         <arg name="sensor_name"             value="$(arg sensor_name)" />
         <arg name="enable_people_tracking"  value="$(arg enable_people_tracking)" />
         <arg name="enable_pose"             value="$(arg enable_pose)" />
