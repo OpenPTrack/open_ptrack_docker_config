@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- SESSION ID: 1500506803 -->
+<launch>
+    <arg name="enable_people_tracking" default="true" />
+    <arg name="enable_pose" default="true" />
+    <arg name="enable_object" default="true" />
+    <arg name="sensor_name" default="realsense_head" />
+    <arg name="sensor_type" default="kinect2" />
+    
+    <!-- launch single camera tracking -->
+    <include file="$(find detection)/launch/single_camera_tracking_node_$(sensor_type).launch">
+        <arg name="sensor_name"             value="$(arg sensor_name)" />
+        <arg name="enable_people_tracking"  value="$(arg enable_people_tracking)" />
+        <arg name="enable_pose"             value="$(arg enable_pose)" />
+        <arg name="enable_object"           value="$(arg enable_object)" />
+    </include>
+</launch>
