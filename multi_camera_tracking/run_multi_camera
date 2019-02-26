@@ -44,8 +44,12 @@ if [ $# -eq 0 ]; then
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/launch/,destination=/root/workspace/ros/src/open_ptrack/tracking/launch/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/conf/,destination=/root/workspace/ros/src/open_ptrack/tracking/conf/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/yolo_detector/launch/,destination=/root/workspace/ros/src/open_ptrack/yolo_detector/launch/ \
+            
+            --privileged \
             --net=host \
             --device /dev/bus/usb:/dev/bus/usb \
+            -v /dev:/dev \
+            --restart always \
             --env-file ros_network.env \
             --name $container_name \
             $image_name bash     
