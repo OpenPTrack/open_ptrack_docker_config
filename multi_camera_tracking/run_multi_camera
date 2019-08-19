@@ -1,5 +1,5 @@
 #!/bin/bash
-image_name="openptrack/open_ptrack"
+image_name="openptrack/open_ptrack:merged"
 container_name="open_ptrack_multi_camera"
 cd $(dirname $0)
 if [ $# -eq 0 ]; then
@@ -44,8 +44,11 @@ if [ $# -eq 0 ]; then
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/launch/,destination=/root/workspace/ros/src/open_ptrack/tracking/launch/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/conf/,destination=/root/workspace/ros/src/open_ptrack/tracking/conf/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/yolo_detector/launch/,destination=/root/workspace/ros/src/open_ptrack/yolo_detector/launch/ \
+            --privileged \
             --net=host \
             --device /dev/bus/usb:/dev/bus/usb \
+            -v /dev:/dev \
+            --restart always \
             --env-file ros_network.env \
             --name $container_name \
             $image_name bash     
