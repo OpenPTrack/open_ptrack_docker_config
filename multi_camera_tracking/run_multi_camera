@@ -1,5 +1,5 @@
 #!/bin/bash
-image_name="openptrack/open_ptrack:merged"
+image_name="openptrackofficial/1804:latest"
 container_name="open_ptrack_multi_camera"
 cd $(dirname $0)
 if [ $# -eq 0 ]; then

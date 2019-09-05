@@ -1,5 +1,5 @@
 #!/bin/bash
-image_name="openptrack/open_ptrack:dev"
+image_name="openptrackofficial/1804:latest"
 container_name="open_ptrack_single_camera"
 cd $(dirname $0)
 
