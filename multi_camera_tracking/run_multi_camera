@@ -35,6 +35,7 @@ if [ $# -eq 0 ]; then
             -ti \
             -e DISPLAY \
             --env QT_X11_NO_MITSHM=1 \
+            --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             -v $(pwd)/open_ptrack_config/$MACHINE_TYPE/etc/ntp.conf/:/etc/ntp.conf \
             --mount type=bind,source=$(pwd)/open_ptrack_config/opt_calibration/launch/,destination=/root/workspace/ros/src/open_ptrack/opt_calibration/launch/ \
