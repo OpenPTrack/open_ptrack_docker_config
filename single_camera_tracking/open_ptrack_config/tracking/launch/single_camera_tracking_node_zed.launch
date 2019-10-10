@@ -25,7 +25,7 @@
     </group>
 
     <!-- Skeleton tracking -->
-    <!-- <group if="$(arg enable_pose)">
+    <group if="$(arg enable_pose)">
   <include file="$(find detection)/launch/skeleton_detector_zed.launch">
     <arg name="sensor_name" value="$(arg sensor_name)" />
   </include>
@@ -33,7 +33,7 @@
      <arg name="input_topic" value="/detector/skeletons" />
   </include>
   <include file="$(find pose_recognition)/launch/pose_recognition.launch" />
-  </group> -->
+  </group>
 
     <!-- Object Tracking -->
     <group if="$(arg enable_object)">
