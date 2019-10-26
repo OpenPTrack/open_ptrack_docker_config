@@ -3,7 +3,7 @@ image_name="openptrackofficial/1804:latest"
 container_name="open_ptrack_multi_camera"
 cd $(dirname $0)
 if [ $# -eq 0 ]; then
-    if [ "$(sudo docker ps -a | grep $container_name)" ]; then
+    if [ "$(sudo docker ps -a | grep -w $container_name)" ]; then
 
         if [ ! "$(sudo docker inspect -f {{.State.Running}} $container_name)" ]; then
             printf "$container_name container is already running.\nRunning a new command in $container_name. \n" && \
@@ -45,6 +45,7 @@ if [ $# -eq 0 ]; then
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/launch/,destination=/root/workspace/ros/src/open_ptrack/tracking/launch/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/conf/,destination=/root/workspace/ros/src/open_ptrack/tracking/conf/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/yolo_detector/launch/,destination=/root/workspace/ros/src/open_ptrack/yolo_detector/launch/ \
+            --mount type=bind,source=$(pwd)/open_ptrack_config/opt_utils/conf/,destination=/root/workspace/ros/src/open_ptrack/opt_utils/conf/ \
             --privileged \
             --net=host \
             --device /dev/bus/usb:/dev/bus/usb \
