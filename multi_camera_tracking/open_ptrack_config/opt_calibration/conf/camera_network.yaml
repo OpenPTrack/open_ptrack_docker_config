@@ -6,19 +6,19 @@ enable_object: true
 network:
   - pc: "PC1"
     sensors:
-      - type: kinect2
-        id: "kinect01"
+      - type: zed
+        id: "zed01"
         people_detector: hog
   - pc: "PC2"
     sensors:
       - type: kinect2
         id: "kinect02"
         people_detector: hog
-  - pc: "PC3"
-    sensors:
-      - type: kinect2
-        id: "kinect03"
-        people_detector: hog
+#  - pc: "PC3"
+#    sensors:
+#      - type: kinect2
+#        id: "kinect03"
+#        people_detector: hog
 
 #  - pc: "opt2-chela-master"
 #    sensors:
