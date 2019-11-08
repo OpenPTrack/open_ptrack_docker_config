@@ -28,4 +28,4 @@ echo "Installing nvidia-docker 2 and reload the Docker daemon configuration" && 
 sudo apt-get install -y nvidia-docker2 && \
 sudo pkill -SIGHUP dockerd && \
 echo -e "\033[1mPlease reboot your system and test nvidia-docker2 by using:\033[0m"
-echo "sudo docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi"
+echo "sudo docker run --runtime=nvidia --rm nvidia/cuda:8.0-devel nvidia-smi"
