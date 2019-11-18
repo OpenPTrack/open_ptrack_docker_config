@@ -7,6 +7,8 @@
     <arg name="sensor_name" default="realsense_head" />
     <arg name="sensor_type" default="realsense" />
 
+    <arg name="yolo_based_people_tracking" default="false" />
+
     <include file="$(find realsense2_camera)/launch/rs_rgbd.launch">
         <arg name="camera" value="$(arg sensor_name)" />
     </include>
