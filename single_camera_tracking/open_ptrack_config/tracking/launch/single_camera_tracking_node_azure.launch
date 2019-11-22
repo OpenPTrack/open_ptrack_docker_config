@@ -10,7 +10,9 @@
   <!-- Load calibration results -->
   <!--include file="$(find opt_calibration)/launch/opt_calibration_results.launch"/-->
 
-  <include file="$(find azure_kinect_ros_driver)/launch/driver.launch">
+  <include file="$(find azure_kinect_ros_driver)/launch/driver.launch" ns="$(arg sensor_name)">
+    <arg name="rgb_point_cloud" value="false" />
+    <arg name="depth_mode" value="NFOV_UNBINNED" />
   </include>
 
   <group if="$(arg enable_people_tracking)">
