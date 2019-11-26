@@ -1,12 +1,14 @@
 <launch>
   
   <arg name="input_topic" value="/detector/detections" />
+  <arg name="sensor_type" default="" />
     
   <!-- Launch the tracking node -->
   <node pkg="tracking" type="tracker" name="tracker_node" output="screen">
     <remap from="~input" to="$(arg input_topic)" />
     <rosparam command="load" file="$(find tracking)/conf/tracker.yaml" /> 
-    <rosparam command="load" file="$(find detection)/conf/haar_disp_ada_detector.yaml" /> 
+    <rosparam command="load" file="$(find detection)/conf/haar_disp_ada_detector.yaml" />
+    <param name="sensor_type" value="$(arg sensor_type)" />
   </node>
 
   <!-- Re-publishing at fixed rate / filtering node -->

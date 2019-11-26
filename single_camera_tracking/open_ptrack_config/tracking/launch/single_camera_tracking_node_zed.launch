@@ -11,9 +11,9 @@
     <group ns="$(arg sensor_name)">
         <include file="$(find zed_wrapper)/launch/zed.launch">
             <arg name="camera_model" value="zed" />
-            <!-- <arg name="frame_rate" value="100" /> -->
-            <!-- <arg name="resolution" value="3" /> -->
         </include>
+        <param name="zed/zed_node/depth/quality" value="4" />
+        <param name="zed/zed_node/general/resolution" value="3" />
     </group>
 
     <group if="$(arg enable_people_tracking)">
@@ -30,7 +30,9 @@
               <arg name="sensor_type" value="$(arg sensor_type)" />
           </include>
         </group>  
-      <include file="$(find tracking)/launch/tracker_single.launch" />
+      <include file="$(find tracking)/launch/tracker_single.launch">
+        <arg name="sensor_type" value="$(arg sensor_type)" />
+      </include> 
     </group>
 
     <!-- Skeleton tracking -->
