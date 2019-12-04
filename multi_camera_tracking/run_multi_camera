@@ -22,10 +22,10 @@ if [ $# -eq 0 ]; then
 
         if [[ $ROS_MASTER_URI = *$ROS_IP* ]]; then
                     export MACHINE_TYPE="master" && \
-                    printf "This machine is recognized as master.\n"
+                    printf "This machine is recognized as the master PC.\n"
         else
                     export MACHINE_TYPE="slave" && \
-                    printf "This machine is recognized as slave.\n"
+                    printf "This machine is recognized as a client.\n"
         fi
 
         printf "Starting $container_name container.\n" && \
