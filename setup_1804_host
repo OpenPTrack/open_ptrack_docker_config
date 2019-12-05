@@ -1,16 +1,9 @@
 #!/bin/bash
 # Install nvidia-384
-echo "Installing nvidia-396" && \
+echo "Installing nvidia-driver-430" && \
 sudo apt-get update && \
-sudo apt-get install -y nvidia-396 && \
-echo "Successfully installed nvidia-396"
-# Install cuda-9.2
-wget https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux -O cuda.run && \
-chmod +x cuda.run && \ 
-./cuda.run -silent --toolkit && \
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.2/lib64' >> ~/.bashrc &&\
-echo 'export PATH=$PATH:/usr/local/cuda-9.2/bin' >> ~/.bashrc          
-echo "Successfully installed cuda_9.2"
+sudo apt-get install -y nvidia-driver-430 && \
+echo "Successfully installed nvidia-driver-430"
 # Install Docker
 echo "Installing Docker" && \
 sudo apt-get install curl && \
@@ -35,4 +28,4 @@ echo "Installing nvidia-docker 2 and reload the Docker daemon configuration" && 
 sudo apt-get install -y nvidia-docker2 && \
 sudo pkill -SIGHUP dockerd && \
 echo -e "\033[1mPlease reboot your system and test nvidia-docker2 by using:\033[0m"
-echo "sudo docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi"
+echo "sudo docker run --runtime=nvidia --rm nvidia/cuda:8.0-devel nvidia-smi"
