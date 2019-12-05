@@ -16,27 +16,27 @@
   </include>
 
   <group if="$(arg enable_people_tracking)">
-  <!-- People tracking -->
-  <include file="$(find detection)/launch/detector_depth_azure.launch"/>
-  <include file="$(find tracking)/launch/tracker_single.launch"/>
+    <!-- People tracking -->
+    <include file="$(find detection)/launch/detector_depth_azure.launch"/>
+    <include file="$(find tracking)/launch/tracker_single.launch"/>
   </group>
 
   <group if="$(arg enable_pose)">
-  <!-- Skeleton tracking -->
-  <include file="$(find detection)/launch/skeleton_detector.launch">
-    <arg name="sensor_name" value="$(arg sensor_name)" />
-  </include>
-  <include file="$(find tracking)/launch/skeleton_tracker_single.launch">
-     <arg name="input_topic" value="/detector/skeletons" />
-  </include>
-  <!-- Pose recognition -->
-  <include file="$(find pose_recognition)/launch/pose_recognition.launch" />
+    <!-- Skeleton tracking -->
+    <include file="$(find detection)/launch/skeleton_detector_azure.launch">
+      <arg name="sensor_name" value="$(arg sensor_name)" />
+    </include>
+    <include file="$(find tracking)/launch/skeleton_tracker_single.launch">
+      <arg name="input_topic" value="/detector/skeletons" />
+    </include>
+    <!-- Pose recognition -->
+    <include file="$(find pose_recognition)/launch/pose_recognition.launch" />
   </group>
 
   <group if="$(arg enable_object)">
   <!-- Object Tracking -->
-    <include file="$(find yolo_detector)/launch/detect_yolo_object_kinect_network.launch">
-      <arg name="sensor_name"             value="$(arg sensor_name)" />
+    <include file="$(find yolo_detector)/launch/detect_yolo_object_azure_network.launch">
+      <arg name="sensor_name" value="$(arg sensor_name)" />
     </include>
     <include file="$(find tracking)/launch/object_tracker_single.launch" />
   </group>
