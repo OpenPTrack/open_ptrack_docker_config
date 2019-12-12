@@ -15,6 +15,7 @@
     <arg name="rgb_point_cloud" value="false" />
     <arg name="depth_mode" value="NFOV_UNBINNED" />
     <arg name="color_resolution" value="720P" />
+    <arg name="fps" value="30" />
   </include>
 
   <group if="$(arg enable_people_tracking)">
