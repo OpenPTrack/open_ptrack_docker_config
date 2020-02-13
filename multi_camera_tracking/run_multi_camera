@@ -46,6 +46,7 @@ if [ $# -eq 0 ]; then
             --mount type=bind,source=$(pwd)/open_ptrack_config/tracking/conf/,destination=/root/workspace/ros/src/open_ptrack/tracking/conf/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/yolo_detector/launch/,destination=/root/workspace/ros/src/open_ptrack/yolo_detector/launch/ \
             --mount type=bind,source=$(pwd)/open_ptrack_config/opt_utils/conf/,destination=/root/workspace/ros/src/open_ptrack/opt_utils/conf/ \
+            --mount type=bind,source=$(pwd)/open_ptrack_config/yolo_detector/cfg/,destination=/root/workspace/ros/src/open_ptrack/yolo_detector/cfg/ \
             --privileged \
             --net=host \
             --device /dev/bus/usb:/dev/bus/usb \
